@@ -5,11 +5,11 @@ services:
     command: bash -c "(yarn api prisma migrate deploy || yarn api prisma migrate resolve --applied 20220420012853_init) && node api/dist/index.js"
     labels:
       traefik.http.routers.server.rule: Host(`teledrive.localhost`)
-      traefik.port: 7860
+      traefik.port: 4000
     ports:
-      - "${PORT:-7860}:${PORT:-7860}"
+      - "${PORT:-4000}:${PORT:-4000}"
     expose:
-      - ${PORT:-7860}
+      - ${PORT:-4000}
     build:
       context: ../.
       dockerfile: Dockerfile
